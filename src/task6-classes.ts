@@ -11,43 +11,45 @@ import { Book } from "./task1-types";
 import { filterByTitle, sortBooks } from "./task5-utils";
 
 export class BookCatalog {
-    private books: Book[];
-    readonly id: string;
+  private books: Book[];
+  readonly id: string;
 
-    constructor(id: string, books: Book[] = []){
-        this.id = id;
-        this.books = [...books];
-    }
-
-    addBook(book: Book): void {
-        this.books = [...this.books, book];
-    }
-
-    removeBook(id: string): void {
-        this.books = this.books.filter((book) => book.id !== id );
-    }
-
-    getBooks(): Book[] {
-        return [...this.books];
-    }
-
-      searchByTitle(query: string): Book[] {
-        if (!query.trim()) {
-            return this.getBooks();
-        }
-
-        return this.books.filter(filterByTitle(query));
-    }
+  constructor(id: string, books: Book[] = []) {
+    this.id = id;
+    this.books = [...books];
+  }
 
 
-    sortBy(sortType: "year" | "rating"): Book[] {
-        return sortBooks(this.books, sortType);
-    }
+  addBook = (book: Book): void => {
+    this.books = [...this.books, book];
+  };
 
-    get count(): number {
-        return this.books.length;
-    }
+
+  removeBook = (id: string): void => {
+    this.books = this.books.filter((book) => book.id !== id);
+  };
+
+
+  getBooks = (): Book[] => {
+    return [...this.books];
+  };
+
+
+  searchByTitle = (query: string): Book[] => {
+    return this.books.filter(filterByTitle(query));
+  };
+
+
+  sortBy = (sortType: "year" | "rating"): Book[] => {
+    return sortBooks([...this.books], sortType);
+  };
+  
+
+  get count(): number {
+    return this.books.length;
+  }
 }
+
 /*
 Реализуйте класс BookCatalog.
 

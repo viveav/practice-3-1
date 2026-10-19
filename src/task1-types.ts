@@ -18,16 +18,8 @@ export type Catalog = Record<string, Book>;
 export type BookFilter = (book: Book) => boolean;
 
 
-// Функция formatBook(book: Book): string в формате: "Title (Year) — Authors"
-export function formatBook(book: Book): string {
-  const yearStr = book.year !== undefined ? ` (${book.year})` : "";
-  const authorsStr = book.authors.join(", ");
-  return `${book.title}${yearStr} — ${authorsStr}`;
-}
-
 // Функция calculateAverageYear(books: Book[]): number возвращает средний год издания. Если книг нет или у них нет года — вернуть 0.
-`/** @deprecated пока не используется, задел на фичу "Статистика" */`
-export function calculateAverageYear(books: Book[]): number {
+export function calculateAverageYear(books: Book[]): number { `/** @deprecated пока не используется, задел на фичу "Статистика" */`
   const booksWithYear = books.filter((book) => book.year !== undefined);
 
   if (booksWithYear.length === 0) return 0;
